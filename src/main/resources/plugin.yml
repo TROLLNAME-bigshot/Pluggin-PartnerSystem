@@ -1,0 +1,44 @@
+name: PromoDawn
+version: '${project.version}'
+main: grinwin.promodawn.PromoDawn
+api-version: '1.16'
+softdepend: [PlaceholderAPI]
+commands:
+  promo:
+    description: 'Активировать промокод'
+    permission: 'promodawn.promo'
+    usage: '/promo <код>'
+  promoreload:
+    description: 'Перезагрузить конфигурацию PromoDawn'
+    permission: 'promodawn.reload'
+  mypromo:
+    description: 'Открыть личное меню промокода'
+    permission: 'promodawn.mypromo'
+  promos:
+    description: 'Список ютуберов'
+    permission: 'promodawn.promos'
+  promocheck:
+    description: 'Проверить промокод игрока'
+    permission: 'promodawn.check'
+    usage: '/promocheck <ник>'
+  promoadd:
+    description: Add limited promo code
+    permission: promodawn.adminpromos
+  p:
+    description: Партнерские транзакции и выплаты
+    permission: promodawn.partner.admin
+permissions:
+  promodawn.promo:
+    default: true
+  promodawn.reload:
+    default: op
+  promodawn.mypromo:
+    default: true
+  promodawn.promos:
+    default: true
+  promodawn.notify:
+    default: op
+  promodawn.check:
+    default: op
+  promodawn.partner.admin:
+    default: op

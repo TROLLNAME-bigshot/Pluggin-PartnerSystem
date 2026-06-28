@@ -41,7 +41,7 @@ public class PromosCommand implements CommandExecutor {
                 new org.bukkit.scheduler.BukkitRunnable() {
                     @Override
                     public void run() {
-                        GuiBuilder builder = new GuiBuilder(plugin, plugin.getPromoService());
+                        GuiBuilder builder = new GuiBuilder(plugin, plugin.getPromoService(), plugin.getPartnerFinanceService());
                         player.openInventory(builder.buildYoutubersList(finalTotals));
                     }
                 }.runTask(plugin);

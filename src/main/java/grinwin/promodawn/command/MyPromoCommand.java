@@ -2,7 +2,9 @@ package grinwin.promodawn.command;
 
 import grinwin.promodawn.PromoDawn;
 import grinwin.promodawn.gui.GuiBuilder;
+import grinwin.promodawn.model.MyPromoMenuData;
 import grinwin.promodawn.model.PromoCode;
+import grinwin.promodawn.service.PartnerFinanceService;
 import grinwin.promodawn.service.PromoService;
 import grinwin.promodawn.util.MessageUtil;
 import org.bukkit.command.Command;
@@ -16,10 +18,12 @@ public class MyPromoCommand implements CommandExecutor {
 
     private final PromoDawn plugin;
     private final PromoService service;
+    private final PartnerFinanceService partnerFinanceService;
 
-    public MyPromoCommand(PromoDawn plugin, PromoService service) {
+    public MyPromoCommand(PromoDawn plugin, PromoService service, PartnerFinanceService partnerFinanceService) {
         this.plugin = plugin;
         this.service = service;
+        this.partnerFinanceService = partnerFinanceService;
     }
 
     @Override
@@ -44,12 +48,12 @@ public class MyPromoCommand implements CommandExecutor {
             @Override
             public void run() {
                 try {
-                    grinwin.promodawn.model.StatsSnapshot snap = service.loadStatsPage(pc.getCode(), 0, 45);
+                    MyPromoMenuData data = partnerFinanceService.loadMyPromoMenuData(pc, 0, 45, 0, 36);
                     new org.bukkit.scheduler.BukkitRunnable() {
                         @Override
                         public void run() {
-                            GuiBuilder builder = new GuiBuilder(plugin, service);
-                            player.openInventory(builder.buildYoutuberDetail(pc, 0, snap));
+                            GuiBuilder builder = new GuiBuilder(plugin, service, partnerFinanceService);
+                            player.openInventory(builder.buildMyPromoRoot(data));
                         }
                     }.runTask(plugin);
                 } catch (Exception e) {
