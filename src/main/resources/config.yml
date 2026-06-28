@@ -1,0 +1,140 @@
+---
+mysql:
+  host: "localhost"
+  port: 3306
+  database: "minecraft_plugins"
+  user: "GrinWin"
+  password: "CHANGE_ME"
+  pool:
+    maximumPoolSize: 10
+    minimumIdle: 2
+    connectionTimeoutMs: 30000
+
+settings:
+  useTitles: true
+  useActionBar: true
+  useSounds: true
+  usePlayerHeads: false  # true = головы игроков со скинами, false = обычные головы (быстрее)
+  cacheHeads: true       # Кешировать головы игроков для производительности
+
+messages:
+  prefix: "&x&0&0&E&0&F&F&lПр&x&0&0&B&1&F&9&lом&x&0&0&8&2&F&2&lок&x&0&0&5&3&E&C&lод&7» "
+  no-permission: "&cУ вас нет прав."
+  player-only: "&cКоманда только для игроков."
+  usage-promo: "&eИспользование: &f/promo <код>"
+  prompt-promo: "&7От кого вы пришли? Введите &e/promo <код>"
+  code-not-exists: "&cТакого промокода не существует."
+  code-already-used: "&cВы уже использовали промокод."
+  code-success: "&aПромокод &f%code% &aуспешно активирован!"
+  code-already-claimed-from-other: "&cВы уже активировали промокод другого ютубера."
+  reload-success: "&aКонфигурация перезагружена."
+
+titles:
+  success:
+    title: "&aУспех!"
+    subtitle: "Вы активировали &f%code%"
+    fadeIn: 5
+    stay: 40
+    fadeOut: 10
+
+sounds:
+  success:
+    name: "ENTITY_PLAYER_LEVELUP"
+    volume: 1.0
+    pitch: 1.2
+  error:
+    name: "ENTITY_VILLAGER_NO"
+    volume: 1.0
+    pitch: 1.0
+
+gui:
+  mypromo:
+    title: "&8Мой промокод"
+  promos:
+    title: "&8Промокоды ютуберов"
+
+partner-system:
+  messages:
+    admin-donation: "&fИгрок &a%player% &fзадонатил &a%amount% &fрублей"
+    partner-donation: "&fИгрок &a%player% &fзадонатил &a%amount% &fрублей по вашему промокоду. Вы получили с него &a%earned%&f."
+
+rewards:
+  # Команды выполняются от имени консоли. Доступны плейсхолдеры: %player%, %code%, %owner%
+  default:
+    commands:
+      - "automine localbust FIREFLIES 2.0 %player% 30m"
+      - "lp user %player% parent addtemp goldpass 2h"
+      - "ei give %player% promo_helmet 1"
+      - "ei give %player% promo_boots 1"
+      # - "minecraft:give %player% minecraft:diamond_boots{display:{Name:'{"text":"Награда за промокод","color":"gold"}'},Enchantments:[{id:"minecraft:protection",lvl:1}]} 1"
+    messages:
+      - ""
+      - "&FВы получили: "
+      - "&fЛокальный бустер §x§0§3§F§F§0§0св§x§0§E§F§F§0§0ет§x§1§8§F§F§0§0ля§x§2§3§F§F§0§0чк§x§2§D§F§F§0§0ов"
+      - "§x§F§F§E§E§0§0Зо§x§F§F§E§7§0§0ло§x§F§F§D§F§0§0то§x§F§F§D§8§0§0й §x§F§F§D§0§0§0пр§x§F§F§C§9§0§0оп§x§F§F§C§1§0§0ус§x§F§F§C§1§0§0к &fна 2 часа"
+      - "&bАлмазный шлем"
+      - "&bАлмазные ботинки"
+      - ""
+
+promo-codes:
+  # Пример промокода
+  GRINWIN:
+    owner: "grinwin" # ник ютубера/владельца промо (у кого откроется /mypromo)
+    reward: "default" # ключ из секции rewards
+    create-data: "25.08.2025 14:02"
+    created-at: 1700000000 # unix timestamp (секунды)
+    percentage-promo: 40 # процент партнера с донатов игроков по этому промокоду
+  URSUN:
+    owner: "UrsunHD" # ник ютубера/владельца промо (у кого откроется /mypromo)
+    reward: "default" # ключ из секции rewards
+    create-data: "25.08.2025 14:02"
+    created-at: 1700000000 # unix timestamp (секунды)
+    percentage-promo: 40
+  Frizy:
+    owner: "e_FriZy" # ник ютубера/владельца промо (у кого откроется /mypromo)
+    reward: "default" # ключ из секции rewards
+    create-data: "08.10.2025 23:46"
+    created-at: 1700000000 # unix timestamp (секунды)
+    percentage-promo: 40
+  Sosiska:
+    owner: "Sosiska2290" # ник ютубера/владельца промо (у кого откроется /mypromo)
+    reward: "default" # ключ из секции rewards
+    create-data: "10.10.2025 21:43"
+    created-at: 1700000000 # unix timestamp (секунды)
+    percentage-promo: 40
+  dirol:
+    owner: "dirol_top" # ник ютубера/владельца промо (у кого откроется /mypromo)
+    reward: "default" # ключ из секции rewards
+    create-data: "23.10.2025 21:46"
+    created-at: 1700000000 # unix timestamp (секунды)
+    percentage-promo: 40
+  clack:
+    owner: "clack" # ник ютубера/владельца промо (у кого откроется /mypromo)
+    reward: "default" # ключ из секции rewards
+    create-data: "04.11.2025 21:46"
+    created-at: 1700000000 # unix timestamp (секунды)
+    percentage-promo: 40
+  foder:
+    owner: "fodergemetnesoft" # ник ютубера/владельца промо (у кого откроется /mypromo)
+    reward: "default" # ключ из секции rewards
+    create-data: "08.11.2025 21:46"
+    created-at: 1700000000 # unix timestamp (секунды)
+    percentage-promo: 40
+  Aimers:
+    owner: "AimerS" # ник ютубера/владельца промо (у кого откроется /mypromo)
+    reward: "default" # ключ из секции rewards
+    create-data: "26.11.2025 21:46"
+    created-at: 1700000000 # unix timestamp (секунды)
+    percentage-promo: 40
+  egorik:
+    owner: "eeeegorikkkk" # ник ютубера/владельца промо (у кого откроется /mypromo)
+    reward: "default" # ключ из секции rewards
+    create-data: "12.12.2025 21:46"
+    created-at: 1700000000 # unix timestamp (секунды)
+    percentage-promo: 40
+  nasper:
+    owner: "NaSpEr" # ник ютубера/владельца промо (у кого откроется /mypromo)
+    reward: "default" # ключ из секции rewards
+    create-data: "18.12.2025 21:46"
+    created-at: 1700000000 # unix timestamp (секунды)
+    percentage-promo: 40

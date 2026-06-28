@@ -33,10 +33,12 @@
 
 ### Backend
 
-* Java 16
-* Spring Boot
-* Spring Web
-* Spring Data JPA
+- Java 8
+- Maven
+- Spigot API 1.16.5
+- MySQL
+- HikariCP
+- PlaceholderAPI
 
 ### Minecraft Plugin
 
